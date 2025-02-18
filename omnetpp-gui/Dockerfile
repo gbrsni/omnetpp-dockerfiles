@@ -32,7 +32,7 @@ RUN wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-$VERSION/o
 
 RUN mv omnetpp-6.1 omnetpp
 WORKDIR /root/omnetpp
-ENV PATH /root/omnetpp/bin:$PATH
+ENV PATH=/root/omnetpp/bin:$PATH
 # remove unused files and build
 RUN python3 -m venv .venv --upgrade-deps --clear --prompt "omnetpp/.venv" && \
     source .venv/bin/activate && \
@@ -50,7 +50,7 @@ ENV OPP_VER=$VERSION
 RUN mkdir -p /root/omnetpp
 WORKDIR /root/omnetpp
 COPY --from=builder /root/omnetpp/ .
-ENV PATH /root/omnetpp/bin:$PATH
+ENV PATH=/root/omnetpp/bin:$PATH
 RUN chmod 777 /root/ && \
     mkdir -p /root/models && \
     chmod 777 /root/models && \
