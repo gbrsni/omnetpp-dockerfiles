@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #
 # Copyright (C) OpenSim Kft.
 #
@@ -9,6 +10,9 @@ FROM ghcr.io/omnetpp/omnetpp-base:u24.04-1 as base
 =======
 FROM omnetpp-base:u24.04-1 as base
 >>>>>>> 1ddf25e (Fix ccache permissions, local build targets, alias for make)
+=======
+FROM omnetpp-base:u24.04-1 AS base
+>>>>>>> ccd1582 (Consistent capitalization)
 
 LABEL maintainer="Rudolf Hornig <rudi@omnetpp.org>"
 
@@ -17,7 +21,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends qtbase5-dev 
                           qt5-qmake qtbase5-dev-tools libqt5svg5 libqt5opengl5-dev qtwayland5 libwebkit2gtk-4.1-0
 
 # first stage - build OMNeT++ with GUI
-FROM base as builder
+FROM base AS builder
 
 ARG VERSION
 WORKDIR /root

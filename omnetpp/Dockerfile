@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #
 # Copyright (C) OpenSim Kft.
 #
@@ -9,10 +10,13 @@ FROM ghcr.io/omnetpp/omnetpp-base:u24.04-1 as base
 =======
 FROM omnetpp-base:u24.04-1 as base
 >>>>>>> 1ddf25e (Fix ccache permissions, local build targets, alias for make)
+=======
+FROM omnetpp-base:u24.04-1 AS base
+>>>>>>> ccd1582 (Consistent capitalization)
 LABEL maintainer="Rudolf Hornig <rudi@omnetpp.org>"
 
 # first stage - build omnet
-FROM base as builder
+FROM base AS builder
 ARG VERSION=6.1.0
 SHELL ["/bin/bash", "-c"]
 WORKDIR /root
