@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 # Copyright (C) OpenSim Kft.
 #
@@ -5,6 +6,9 @@
 #
 
 FROM ghcr.io/omnetpp/omnetpp-base:u24.04-1 as base
+=======
+FROM omnetpp-base:u24.04-1 as base
+>>>>>>> 1ddf25e (Fix ccache permissions, local build targets, alias for make)
 LABEL maintainer="Rudolf Hornig <rudi@omnetpp.org>"
 
 # first stage - build omnet
@@ -38,6 +42,7 @@ RUN chmod 775 /root/ && \
     chmod 775 /root/models
 WORKDIR /root/models
 ENV HOME=/root/
+RUN chmod -R a+rwX /root/
 RUN echo 'PS1="omnetpp-$OPP_VER:\w\$ "' >> /root/.bashrc && \
     echo '[ -f "$HOME/omnetpp/setenv" ] && source "$HOME/omnetpp/setenv" -f' >> /root/.bashrc && \
     touch /root/.hushlogin

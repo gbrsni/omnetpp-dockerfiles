@@ -15,3 +15,5 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     python3-pip python3-venv python3-dev libxml2-dev zlib1g-dev doxygen \
     graphviz xdg-utils libdw-dev \
     && apt-get clean
+
+RUN echo "alias justmake=\"opp_makemake -f && make\"" >> /root/.bashrc

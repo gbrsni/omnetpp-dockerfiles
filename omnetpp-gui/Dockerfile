@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #
 # Copyright (C) OpenSim Kft.
 #
@@ -5,6 +6,9 @@
 #
 
 FROM ghcr.io/omnetpp/omnetpp-base:u24.04-1 as base
+=======
+FROM omnetpp-base:u24.04-1 as base
+>>>>>>> 1ddf25e (Fix ccache permissions, local build targets, alias for make)
 
 LABEL maintainer="Rudolf Hornig <rudi@omnetpp.org>"
 
@@ -55,6 +59,7 @@ WORKDIR /root/models
 RUN echo 'PS1="omnetpp-gui-$OPP_VER:\w\$ "' >> /root/.bashrc && chmod +x /root/.bashrc && \
     touch /root/.hushlogin
 ENV HOME=/root/
+RUN chmod -R a+rwX /root/
 ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime-root
 COPY --chmod=0555 ./entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
