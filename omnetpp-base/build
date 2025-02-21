@@ -1,2 +1,2 @@
 #!/bin/sh
-docker buildx build --platform linux/amd64 -t omnetpp-base:u24.04-1 .
+docker buildx build --platform linux/amd64 --load -t omnetpp-base:u24.04-1 .
