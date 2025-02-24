@@ -21,6 +21,7 @@ WORKDIR /root/omnetpp
 RUN python3 -m venv .venv --upgrade-deps --clear --prompt "omnetpp/.venv" && \
     source .venv/bin/activate && \
     python3 -m pip install -r python/requirements.txt && \
+    python3 -m pip install opp-env && \
     source ./setenv && \
     ./configure WITH_LIBXML=yes WITH_QTENV=no WITH_OSG=no WITH_OSGEARTH=no && \
     make -j $(nproc) MODE=release base && \
@@ -42,4 +43,6 @@ RUN chmod -R a+rwX /root/
 RUN echo 'PS1="omnetpp-$OPP_VER:\w\$ "' >> /root/.bashrc && \
     echo '[ -f "$HOME/omnetpp/setenv" ] && source "$HOME/omnetpp/setenv" -f' >> /root/.bashrc && \
     touch /root/.hushlogin
+# SHELL ["/bin/bash", "--init-file", "/root/.bashrc"]
+# RUN opp_env install openflow-latest
 CMD ["/bin/bash", "--init-file", "/root/.bashrc"]
