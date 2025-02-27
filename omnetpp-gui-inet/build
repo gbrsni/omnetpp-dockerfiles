@@ -1,0 +1,12 @@
+#!/bin/sh
+VERSION=6.0.3
+ARCH=$(uname -m)
+if [ "$ARCH" == "arm64" ]; then
+	docker buildx build --build-arg VERSION=$VERSION --platform linux/amd64 --load -t ${PWD}:u24.04-$VERSION .
+elif [ "$ARCH" == "x86_64" ]; then
+	docker build --build-arg VERSION=$VERSION --load -t ${PWD}:u24.04-$VERSION .
+else
+	echo "Unsupported architecture: $ARCH"
+	exit 1
+fi
+
