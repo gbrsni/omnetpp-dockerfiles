@@ -1,5 +1,7 @@
 #!/bin/sh
 
+VERSION=6.0.3
+
 if [ -z "$(command -v x11docker)" ]; then
   echo "'x11docker' is not available."
   echo "Please install it from: https://github.com/mviereck/x11docker/releases"
@@ -8,5 +10,5 @@ fi
 
 # example starter to run the image using podman in a wayland session
 # x11docker --hostwayland -q  --user=RETAIN --env HOME=/root --workdir=/root/models -i -- --rm -v "$(pwd):/root/models" -- omnetpp-gui:u24.04-6.1.0
-x11docker --backend=docker --gpu -c -q --user=1000:1000 --env HOME=/root --workdir=/root/models -i -- --rm -v "$(pwd):/root/models" -- omnetpp-gui:u24.04-6.1.0
+x11docker --backend=docker --network --gpu -c -q --user=1000:1000 --env HOME=/root --workdir=/root/models -i -- --rm -v "$(pwd):/root/models" -- omnetpp-gui:u24.04-${VERSION}
 

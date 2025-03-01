@@ -22,10 +22,13 @@ RUN wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-$VERSION/o
          --referer=https://omnetpp.org/ -O omnetpp-core.tgz --progress=dot:giga && \
          tar xf omnetpp-core.tgz && rm omnetpp-core.tgz
 
-RUN mv omnetpp-6.1 omnetpp
+RUN mv omnetpp-${VERSION} omnetpp
 WORKDIR /root/omnetpp
 ENV PATH=/root/omnetpp/bin:$PATH
 # remove unused files and build
+COPY requirements.txt python/requirements.txt
+# Needed since 6.0.3 refuses to build if it can't create desktop shortcuts
+RUN mkdir /usr/share/desktop-directories/
 RUN python3 -m venv .venv --upgrade-deps --clear --prompt "omnetpp/.venv" && \
     source .venv/bin/activate && \
     python3 -m pip install -r python/requirements.txt && \
